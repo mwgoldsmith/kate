@@ -539,50 +539,50 @@ extern int kate_get_bitstream_version(void);
 extern const char *kate_get_bitstream_version_string(void);
 
 /** \defgroup info kate_info access */
-extern int kate_info_init(kate_info *ki);
-extern int kate_info_set_granule_encoding(kate_info *ki,kate_float resolution,kate_float max_length,kate_float max_event_lifetime);
-extern int kate_info_set_language(kate_info *ki,const char *language);
-extern int kate_info_set_text_directionality(kate_info *ki,kate_text_directionality text_directionality);
-extern int kate_info_set_markup_type(kate_info *ki,kate_markup_type text_markup_type);
-extern int kate_info_set_category(kate_info *ki,const char *category);
-extern int kate_info_set_original_canvas_size(kate_info *ki,size_t width,size_t height);
-extern int kate_info_add_region(kate_info *ki,kate_region *kr);
-extern int kate_info_add_style(kate_info *ki,kate_style *ks);
-extern int kate_info_add_curve(kate_info *ki,kate_curve *kc);
-extern int kate_info_add_motion(kate_info *ki,kate_motion *km);
-extern int kate_info_add_palette(kate_info *ki,kate_palette *kp);
-extern int kate_info_add_bitmap(kate_info *ki,kate_bitmap *kb);
-extern int kate_info_add_font_range(kate_info *ki,kate_font_range *kfr);
-extern int kate_info_add_font_mapping(kate_info *ki,kate_font_mapping *kfm);
-extern int kate_info_matches_language(const kate_info *ki,const char *language);
-extern int kate_info_remove_markup(kate_info *ki,int flag);
-extern int kate_info_no_limits(kate_info *ki,int flag);
-extern int kate_info_clear(kate_info *ki);
+KATE_API int kate_info_init(kate_info *ki);
+KATE_API int kate_info_set_granule_encoding(kate_info *ki,kate_float resolution,kate_float max_length,kate_float max_event_lifetime);
+KATE_API int kate_info_set_language(kate_info *ki,const char *language);
+KATE_API int kate_info_set_text_directionality(kate_info *ki,kate_text_directionality text_directionality);
+KATE_API int kate_info_set_markup_type(kate_info *ki,kate_markup_type text_markup_type);
+KATE_API int kate_info_set_category(kate_info *ki,const char *category);
+KATE_API int kate_info_set_original_canvas_size(kate_info *ki,size_t width,size_t height);
+KATE_API int kate_info_add_region(kate_info *ki,kate_region *kr);
+KATE_API int kate_info_add_style(kate_info *ki,kate_style *ks);
+KATE_API int kate_info_add_curve(kate_info *ki,kate_curve *kc);
+KATE_API int kate_info_add_motion(kate_info *ki,kate_motion *km);
+KATE_API int kate_info_add_palette(kate_info *ki,kate_palette *kp);
+KATE_API int kate_info_add_bitmap(kate_info *ki,kate_bitmap *kb);
+KATE_API int kate_info_add_font_range(kate_info *ki,kate_font_range *kfr);
+KATE_API int kate_info_add_font_mapping(kate_info *ki,kate_font_mapping *kfm);
+KATE_API int kate_info_matches_language(const kate_info *ki,const char *language);
+KATE_API int kate_info_remove_markup(kate_info *ki,int flag);
+KATE_API int kate_info_no_limits(kate_info *ki,int flag);
+KATE_API int kate_info_clear(kate_info *ki);
 
 /** \defgroup granule Granule calculations */
-extern int kate_granule_shift(const kate_info *ki);
-extern int kate_granule_split_time(const kate_info *ki,kate_int64_t granulepos,kate_float *base,kate_float *offset);
-extern kate_float kate_granule_time(const kate_info *ki,kate_int64_t granulepos);
-extern kate_int64_t kate_duration_granule(const kate_info *ki,kate_float duration);
-extern kate_float kate_granule_duration(const kate_info *ki,kate_int64_t duration);
+KATE_API int kate_granule_shift(const kate_info *ki);
+KATE_API int kate_granule_split_time(const kate_info *ki,kate_int64_t granulepos,kate_float *base,kate_float *offset);
+KATE_API kate_float kate_granule_time(const kate_info *ki,kate_int64_t granulepos);
+KATE_API kate_int64_t kate_duration_granule(const kate_info *ki,kate_float duration);
+KATE_API kate_float kate_granule_duration(const kate_info *ki,kate_int64_t duration);
 
 /** \defgroup misc misc */
-extern int kate_clear(kate_state *k);
-extern int kate_motion_get_point(const kate_motion *km,kate_float duration,kate_float t,kate_float *x,kate_float *y);
-extern int kate_curve_get_point(const kate_curve *kc,kate_float t,kate_float *x,kate_float *y);
-extern int kate_region_init(kate_region *kr);
-extern int kate_style_init(kate_style *ks);
-extern int kate_palette_init(kate_palette *kp);
-extern int kate_bitmap_init(kate_bitmap *kb);
-extern int kate_bitmap_init_new(kate_bitmap *kb);
-extern int kate_curve_init(kate_curve *kc);
-extern int kate_motion_init(kate_motion *km);
+KATE_API int kate_clear(kate_state *k);
+KATE_API int kate_motion_get_point(const kate_motion *km,kate_float duration,kate_float t,kate_float *x,kate_float *y);
+KATE_API int kate_curve_get_point(const kate_curve *kc,kate_float t,kate_float *x,kate_float *y);
+KATE_API int kate_region_init(kate_region *kr);
+KATE_API int kate_style_init(kate_style *ks);
+KATE_API int kate_palette_init(kate_palette *kp);
+KATE_API int kate_bitmap_init(kate_bitmap *kb);
+KATE_API int kate_bitmap_init_new(kate_bitmap *kb);
+KATE_API int kate_curve_init(kate_curve *kc);
+KATE_API int kate_motion_init(kate_motion *km);
 
 /** \defgroup text Text manipulation */
-extern int kate_text_get_character(kate_text_encoding text_encoding,const char ** const text,size_t *len0);
-extern int kate_text_set_character(kate_text_encoding text_encoding,int c,char ** const text,size_t *len0);
-extern int kate_text_remove_markup(kate_text_encoding text_encoding,char *text,size_t *len0);
-extern int kate_text_validate(kate_text_encoding text_encoding,const char *text,size_t len0);
+KATE_API int kate_text_get_character(kate_text_encoding text_encoding,const char ** const text,size_t *len0);
+KATE_API int kate_text_set_character(kate_text_encoding text_encoding,int c,char ** const text,size_t *len0);
+KATE_API int kate_text_remove_markup(kate_text_encoding text_encoding,char *text,size_t *len0);
+KATE_API int kate_text_validate(kate_text_encoding text_encoding,const char *text,size_t len0);
 
 /** \defgroup comments kate_comment access */
 extern int kate_comment_init(kate_comment *kc);
@@ -594,83 +594,83 @@ extern const char *kate_comment_query(const kate_comment *kc,const char *tag,int
 extern int kate_comment_query_count(const kate_comment *kc,const char *tag);
 
 /** \defgroup encoding Encoding */
-extern int kate_encode_init(kate_state *k,kate_info *ki);
-extern int kate_encode_headers(kate_state *k,kate_comment *kc,kate_packet *kp);
-extern int kate_encode_text(kate_state *k,kate_float start_time,kate_float stop_time,const char *text,size_t sz,kate_packet *kp); /* text is not null terminated */
-extern int kate_encode_text_raw_times(kate_state *k,kate_int64_t start_time,kate_int64_t stop_time,const char *text,size_t sz,kate_packet *kp); /* text is not null terminated */
-extern int kate_encode_keepalive(kate_state *k,kate_float t,kate_packet *kp);
-extern int kate_encode_keepalive_raw_times(kate_state *k,kate_int64_t t,kate_packet *kp);
-extern int kate_encode_repeat(kate_state *k,kate_float t,kate_float threshold,kate_packet *kp);
-extern int kate_encode_repeat_raw_times(kate_state *k,kate_int64_t t,kate_int64_t threshold,kate_packet *kp);
-extern int kate_encode_finish(kate_state *k,kate_float t,kate_packet *kp); /* t may be negative to use the end granule of the last event */
-extern int kate_encode_finish_raw_times(kate_state *k,kate_int64_t t,kate_packet *kp); /* t may be negative to use the end granule of the last event */
-extern int kate_encode_set_id(kate_state *k,kate_int32_t id);
-extern int kate_encode_set_language(kate_state *k,const char *language); /* language can be NULL */
-extern int kate_encode_set_text_encoding(kate_state *k,kate_text_encoding text_encoding);
-extern int kate_encode_set_text_directionality(kate_state *k,kate_text_directionality text_directionality);
-extern int kate_encode_set_region_index(kate_state *k,size_t region);
-extern int kate_encode_set_region(kate_state *k,const kate_region *kr);
-extern int kate_encode_set_style_index(kate_state *k,size_t style);
-extern int kate_encode_set_style(kate_state *k,const kate_style *ks);
-extern int kate_encode_set_secondary_style_index(kate_state *k,size_t style);
-extern int kate_encode_set_secondary_style(kate_state *k,const kate_style *ks);
-extern int kate_encode_set_font_mapping_index(kate_state *k,size_t font_mapping);
-extern int kate_encode_add_motion(kate_state *k,kate_motion *km,int destroy);
-extern int kate_encode_add_motion_index(kate_state *k,size_t motion);
-extern int kate_encode_set_palette_index(kate_state *k,size_t palette);
-extern int kate_encode_set_palette(kate_state *k,const kate_palette *kp);
-extern int kate_encode_set_bitmap_index(kate_state *k,size_t bitmap);
-extern int kate_encode_set_bitmap(kate_state *k,const kate_bitmap *kb);
-extern int kate_encode_add_bitmap(kate_state *k,const kate_bitmap *kb);
-extern int kate_encode_add_bitmap_index(kate_state *k,size_t bitmap);
-extern int kate_encode_set_markup_type(kate_state *k,int markup_type);
-extern int kate_encode_merge_meta(kate_state *k,kate_meta *meta);
-extern int kate_encode_add_meta(kate_state *k,const kate_meta *meta);
-extern kate_int64_t kate_encode_get_granule(const kate_state *k);
+KATE_API int kate_encode_init(kate_state *k,kate_info *ki);
+KATE_API int kate_encode_headers(kate_state *k,kate_comment *kc,kate_packet *kp);
+KATE_API int kate_encode_text(kate_state *k,kate_float start_time,kate_float stop_time,const char *text,size_t sz,kate_packet *kp); /* text is not null terminated */
+KATE_API int kate_encode_text_raw_times(kate_state *k,kate_int64_t start_time,kate_int64_t stop_time,const char *text,size_t sz,kate_packet *kp); /* text is not null terminated */
+KATE_API int kate_encode_keepalive(kate_state *k,kate_float t,kate_packet *kp);
+KATE_API int kate_encode_keepalive_raw_times(kate_state *k,kate_int64_t t,kate_packet *kp);
+KATE_API int kate_encode_repeat(kate_state *k,kate_float t,kate_float threshold,kate_packet *kp);
+KATE_API int kate_encode_repeat_raw_times(kate_state *k,kate_int64_t t,kate_int64_t threshold,kate_packet *kp);
+KATE_API int kate_encode_finish(kate_state *k,kate_float t,kate_packet *kp); /* t may be negative to use the end granule of the last event */
+KATE_API int kate_encode_finish_raw_times(kate_state *k,kate_int64_t t,kate_packet *kp); /* t may be negative to use the end granule of the last event */
+KATE_API int kate_encode_set_id(kate_state *k,kate_int32_t id);
+KATE_API int kate_encode_set_language(kate_state *k,const char *language); /* language can be NULL */
+KATE_API int kate_encode_set_text_encoding(kate_state *k,kate_text_encoding text_encoding);
+KATE_API int kate_encode_set_text_directionality(kate_state *k,kate_text_directionality text_directionality);
+KATE_API int kate_encode_set_region_index(kate_state *k,size_t region);
+KATE_API int kate_encode_set_region(kate_state *k,const kate_region *kr);
+KATE_API int kate_encode_set_style_index(kate_state *k,size_t style);
+KATE_API int kate_encode_set_style(kate_state *k,const kate_style *ks);
+KATE_API int kate_encode_set_secondary_style_index(kate_state *k,size_t style);
+KATE_API int kate_encode_set_secondary_style(kate_state *k,const kate_style *ks);
+KATE_API int kate_encode_set_font_mapping_index(kate_state *k,size_t font_mapping);
+KATE_API int kate_encode_add_motion(kate_state *k,kate_motion *km,int destroy);
+KATE_API int kate_encode_add_motion_index(kate_state *k,size_t motion);
+KATE_API int kate_encode_set_palette_index(kate_state *k,size_t palette);
+KATE_API int kate_encode_set_palette(kate_state *k,const kate_palette *kp);
+KATE_API int kate_encode_set_bitmap_index(kate_state *k,size_t bitmap);
+KATE_API int kate_encode_set_bitmap(kate_state *k,const kate_bitmap *kb);
+KATE_API int kate_encode_add_bitmap(kate_state *k,const kate_bitmap *kb);
+KATE_API int kate_encode_add_bitmap_index(kate_state *k,size_t bitmap);
+KATE_API int kate_encode_set_markup_type(kate_state *k,int markup_type);
+KATE_API int kate_encode_merge_meta(kate_state *k,kate_meta *meta);
+KATE_API int kate_encode_add_meta(kate_state *k,const kate_meta *meta);
+KATE_API kate_int64_t kate_encode_get_granule(const kate_state *k);
 
 /** \defgroup decoding Decoding */
-extern int kate_decode_is_idheader(const kate_packet *kp);
-extern int kate_decode_init(kate_state *k,kate_info *ki);
-extern int kate_decode_headerin(kate_info *ki,kate_comment *kc,kate_packet *kp);
-extern int kate_decode_packetin(kate_state *k,kate_packet *kp);
-extern int kate_decode_eventout(kate_state *k,kate_const kate_event **ev); /* event can be NULL */
-extern int kate_decode_seek(kate_state *k);
+KATE_API int kate_decode_is_idheader(const kate_packet *kp);
+KATE_API int kate_decode_init(kate_state *k,kate_info *ki);
+KATE_API int kate_decode_headerin(kate_info *ki,kate_comment *kc,kate_packet *kp);
+KATE_API int kate_decode_packetin(kate_state *k,kate_packet *kp);
+KATE_API int kate_decode_eventout(kate_state *k,kate_const kate_event **ev); /* event can be NULL */
+KATE_API int kate_decode_seek(kate_state *k);
 
 /** \defgroup tracker Tracker */
-extern int kate_tracker_init(kate_tracker *kin,const kate_info *ki,kate_const kate_event *ev);
-extern int kate_tracker_clear(kate_tracker *kin);
-extern int kate_tracker_update(kate_tracker *kin,kate_float t,int window_w,int window_h,int frame_x,int frame_y,int frame_w,int frame_h);
-extern int kate_tracker_morph_styles(kate_style *style,kate_float t,const kate_style *from,const kate_style *to);
-extern int kate_tracker_get_text_path_position(kate_tracker *kin,size_t glyph,int *x,int *y);
-extern int kate_tracker_update_property_at_duration(const kate_tracker *kin,kate_float duration,kate_float t,kate_motion_semantics semantics,kate_float *x,kate_float *y);
-extern int kate_tracker_remap(const kate_tracker *kin,kate_motion_mapping x_mapping,kate_motion_mapping y_mapping,kate_float *x,kate_float *y);
+KATE_API int kate_tracker_init(kate_tracker *kin,const kate_info *ki,kate_const kate_event *ev);
+KATE_API int kate_tracker_clear(kate_tracker *kin);
+KATE_API int kate_tracker_update(kate_tracker *kin,kate_float t,int window_w,int window_h,int frame_x,int frame_y,int frame_w,int frame_h);
+KATE_API int kate_tracker_morph_styles(kate_style *style,kate_float t,const kate_style *from,const kate_style *to);
+KATE_API int kate_tracker_get_text_path_position(kate_tracker *kin,size_t glyph,int *x,int *y);
+KATE_API int kate_tracker_update_property_at_duration(const kate_tracker *kin,kate_float duration,kate_float t,kate_motion_semantics semantics,kate_float *x,kate_float *y);
+KATE_API int kate_tracker_remap(const kate_tracker *kin,kate_motion_mapping x_mapping,kate_motion_mapping y_mapping,kate_float *x,kate_float *y);
 
 /** \defgroup font Font */
-extern int kate_font_get_index_from_code_point(const kate_font_mapping *kfm,int c);
+KATE_API int kate_font_get_index_from_code_point(const kate_font_mapping *kfm,int c);
 
 /** \defgroup high High level API */
-extern int kate_high_decode_init(kate_state *k);
-extern int kate_high_decode_packetin(kate_state *k,kate_packet *kp,kate_const kate_event **ev);
-extern int kate_high_decode_clear(kate_state *k);
+KATE_API int kate_high_decode_init(kate_state *k);
+KATE_API int kate_high_decode_packetin(kate_state *k,kate_packet *kp,kate_const kate_event **ev);
+KATE_API int kate_high_decode_clear(kate_state *k);
 extern const kate_comment *kate_high_decode_get_comments(kate_state *k);
 
 /** \defgroup packet kate_packet */
-extern int kate_packet_wrap(kate_packet *kp,size_t nbytes,const void *data);
-extern int kate_packet_init(kate_packet *kp,size_t nbytes,const void *data);
-extern int kate_packet_clear(kate_packet *kp);
+KATE_API int kate_packet_wrap(kate_packet *kp,size_t nbytes,const void *data);
+KATE_API int kate_packet_init(kate_packet *kp,size_t nbytes,const void *data);
+KATE_API int kate_packet_clear(kate_packet *kp);
 
 /** \defgroup metadata Meta data */
-extern int kate_meta_create(kate_meta **km);
-extern int kate_meta_destroy(kate_meta *km);
-extern int kate_meta_add(kate_meta *km,const char *tag,const char *value,size_t len);
-extern int kate_meta_add_string(kate_meta *km,const char *tag,const char *value);
-extern int kate_meta_query_tag_count(const kate_meta *km,const char *tag);
-extern int kate_meta_query_tag(const kate_meta *km,const char *tag,unsigned int idx,const char **value,size_t *len);
-extern int kate_meta_remove_tag(kate_meta *km,const char *tag,unsigned int idx);
-extern int kate_meta_query_count(const kate_meta *km);
-extern int kate_meta_query(const kate_meta *km,unsigned int idx,const char **tag,const char **value,size_t *len);
-extern int kate_meta_remove(kate_meta *km,unsigned int idx);
-extern int kate_meta_merge(kate_meta *km,kate_meta *km2);
+KATE_API int kate_meta_create(kate_meta **km);
+KATE_API int kate_meta_destroy(kate_meta *km);
+KATE_API int kate_meta_add(kate_meta *km,const char *tag,const char *value,size_t len);
+KATE_API int kate_meta_add_string(kate_meta *km,const char *tag,const char *value);
+KATE_API int kate_meta_query_tag_count(const kate_meta *km,const char *tag);
+KATE_API int kate_meta_query_tag(const kate_meta *km,const char *tag,unsigned int idx,const char **value,size_t *len);
+KATE_API int kate_meta_remove_tag(kate_meta *km,const char *tag,unsigned int idx);
+KATE_API int kate_meta_query_count(const kate_meta *km);
+KATE_API int kate_meta_query(const kate_meta *km,unsigned int idx,const char **tag,const char **value,size_t *len);
+KATE_API int kate_meta_remove(kate_meta *km,unsigned int idx);
+KATE_API int kate_meta_merge(kate_meta *km,kate_meta *km2);
 
 #ifdef __cplusplus
 }
