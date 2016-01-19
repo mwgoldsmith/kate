@@ -187,7 +187,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).pdb</ProgramDataBaseFileName>
       <PreprocessorDefinitions>HAVE_CONFIG_H;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BrowseInformation>true</BrowseInformation>
       <BrowseInformationFile>$(IntDir)bsc\</BrowseInformationFile>
     </ClCompile>
@@ -209,17 +209,26 @@ IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>MKDIR "$(OutDir)..\..\include"
+      <Command>ECHO Off
+SETLOCAL EnableDelayedExpansion EnableExtensions
+
+MKDIR "$(OutDir)..\..\include"
 MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
-COPY "$(ProjectDir)..\..\include\kate\kate.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\kate_config.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\oggkate.h" "$(OutDir)..\..\include\$(ProjectName)"
+FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
+  SET "_HEADER=%%H"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+)
 
 MKDIR "$(OutDir)..\..\licenses"
-COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
+COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
+
+ENDLOCAL
 </Command>
     </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -228,7 +237,7 @@ COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PreprocessorDefinitions>HAVE_CONFIG_H;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ProgramDataBaseFileName>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).pdb</ProgramDataBaseFileName>
       <BrowseInformation>true</BrowseInformation>
       <BrowseInformationFile>$(IntDir)bsc\</BrowseInformationFile>
@@ -250,15 +259,21 @@ IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>MKDIR "$(OutDir)..\..\include"
+      <Command>ECHO Off
+SETLOCAL EnableDelayedExpansion EnableExtensions
+
+MKDIR "$(OutDir)..\..\include"
 MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
-COPY "$(ProjectDir)..\..\include\kate\kate.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\kate_config.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\oggkate.h" "$(OutDir)..\..\include\$(ProjectName)"
+FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
+  SET "_HEADER=%%H"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+)
 
 MKDIR "$(OutDir)..\..\licenses"
-COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
+COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
+
+ENDLOCAL
 </Command>
     </PostBuildEvent>
     <Bscmake>
@@ -273,7 +288,7 @@ COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ProgramDataBaseFileName>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).pdb</ProgramDataBaseFileName>
       <PreprocessorDefinitions>HAVE_CONFIG_H;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
@@ -297,17 +312,26 @@ IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>MKDIR "$(OutDir)..\..\include"
+      <Command>ECHO Off
+SETLOCAL EnableDelayedExpansion EnableExtensions
+
+MKDIR "$(OutDir)..\..\include"
 MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
-COPY "$(ProjectDir)..\..\include\kate\kate.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\kate_config.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\oggkate.h" "$(OutDir)..\..\include\$(ProjectName)"
+FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
+  SET "_HEADER=%%H"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+)
 
 MKDIR "$(OutDir)..\..\licenses"
-COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
+COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
+
+ENDLOCAL
 </Command>
     </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -317,7 +341,7 @@ COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ProgramDataBaseFileName>$(OutDir)..\..\lib\$(PlatformTarget)\$(TargetName).pdb</ProgramDataBaseFileName>
       <PreprocessorDefinitions>HAVE_CONFIG_H;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
@@ -340,17 +364,27 @@ IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>MKDIR "$(OutDir)..\..\include"
+      <Command>
+ECHO Off
+SETLOCAL EnableDelayedExpansion EnableExtensions
+
+MKDIR "$(OutDir)..\..\include"
 MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
-COPY "$(ProjectDir)..\..\include\kate\kate.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\kate_config.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\oggkate.h" "$(OutDir)..\..\include\$(ProjectName)"
+FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
+  SET "_HEADER=%%H"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)\!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+)
 
 MKDIR "$(OutDir)..\..\licenses"
-COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
+COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
+
+ENDLOCAL
 </Command>
     </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
     <ClCompile>
@@ -358,7 +392,7 @@ COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <PreprocessorDefinitions>KATE_DLL_BUILD;HAVE_CONFIG_H;_DEBUG;_WINDOWS;_USRDLL;WIN32;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
@@ -375,28 +409,28 @@ COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <LargeAddressAware>true</LargeAddressAware>
     </Link>
-    <PreBuildEvent>
-      <Command>IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
-  DEL "$(OutDir)..\..\licenses\$(ProjectName).txt"
-)
-
-IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
-  RD /s /q "$(OutDir)..\..\include\$(ProjectName)"
-)
-</Command>
-    </PreBuildEvent>
     <PostBuildEvent>
-      <Command>MKDIR "$(OutDir)..\..\include"
+      <Command>
+ECHO Off
+SETLOCAL EnableDelayedExpansion EnableExtensions
+
+MKDIR "$(OutDir)..\..\include"
 MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
-COPY "$(ProjectDir)..\..\include\kate\kate.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\kate_config.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\oggkate.h" "$(OutDir)..\..\include\$(ProjectName)"
+FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
+  SET "_HEADER=%%H"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+)
 
 MKDIR "$(OutDir)..\..\licenses"
-COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
+COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
+
+ENDLOCAL
 </Command>
     </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
     <ClCompile>
@@ -404,7 +438,7 @@ COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <PreprocessorDefinitions>KATE_DLL_BUILD;HAVE_CONFIG_H;_DEBUG;_WINDOWS;_USRDLL;WIN32;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
@@ -431,17 +465,27 @@ IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>MKDIR "$(OutDir)..\..\include"
+      <Command>
+ECHO Off
+SETLOCAL EnableDelayedExpansion EnableExtensions
+
+MKDIR "$(OutDir)..\..\include"
 MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
-COPY "$(ProjectDir)..\..\include\kate\kate.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\kate_config.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\oggkate.h" "$(OutDir)..\..\include\$(ProjectName)"
+FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
+  SET "_HEADER=%%H"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+)
 
 MKDIR "$(OutDir)..\..\licenses"
-COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
+COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
+
+ENDLOCAL
 </Command>
     </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
     <ClCompile>
@@ -451,7 +495,7 @@ COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <PreprocessorDefinitions>KATE_DLL_BUILD;HAVE_CONFIG_H;WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
@@ -481,15 +525,22 @@ IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>MKDIR "$(OutDir)..\..\include"
+      <Command>
+ECHO Off
+SETLOCAL EnableDelayedExpansion EnableExtensions
+
+MKDIR "$(OutDir)..\..\include"
 MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
-COPY "$(ProjectDir)..\..\include\kate\kate.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\kate_config.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\oggkate.h" "$(OutDir)..\..\include\$(ProjectName)"
+FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
+  SET "_HEADER=%%H"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+)
 
 MKDIR "$(OutDir)..\..\licenses"
-COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
+COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
+
+ENDLOCAL
 </Command>
     </PostBuildEvent>
     <Bscmake>
@@ -504,7 +555,7 @@ COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\include;$(OutDir)..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <PreprocessorDefinitions>KATE_DLL_BUILD;HAVE_CONFIG_H;NDEBUG;_WINDOWS;_USRDLL;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
@@ -533,15 +584,22 @@ IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>MKDIR "$(OutDir)..\..\include"
+      <Command>
+ECHO Off
+SETLOCAL EnableDelayedExpansion EnableExtensions
+
+MKDIR "$(OutDir)..\..\include"
 MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
-COPY "$(ProjectDir)..\..\include\kate\kate.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\kate_config.h" "$(OutDir)..\..\include\$(ProjectName)"
-COPY "$(ProjectDir)..\..\include\kate\oggkate.h" "$(OutDir)..\..\include\$(ProjectName)"
+FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
+  SET "_HEADER=%%H"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+)
 
 MKDIR "$(OutDir)..\..\licenses"
-COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
+COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
+
+ENDLOCAL
 </Command>
     </PostBuildEvent>
     <Bscmake>
@@ -579,7 +637,7 @@ COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt"
     <ClInclude Include="..\..\src\kate_internal.h" />
     <ClInclude Include="..\..\src\kate_meta.h" />
     <ClInclude Include="..\..\src\kate_rle.h" />
-    <ClInclude Include="..\include\config.h" />
+    <ClInclude Include="config.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

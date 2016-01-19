@@ -98,10 +98,10 @@
     <ClInclude Include="..\..\include\kate\kate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\config.h">
+    <ClInclude Include="..\..\src\kate_meta.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\kate_meta.h">
+    <ClInclude Include="config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
