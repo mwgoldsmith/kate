@@ -14,6 +14,20 @@
   The libkate public API.
   */
 
+#if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
+#  if defined(KATE_DLL_BUILD)
+#    define KATE_API __declspec(dllexport)
+#  elif defined(_USRDLL)
+#    define KATE_API __declspec(dllimport)
+#  else
+#    define KATE_API 
+#  endif /* KATE_DLL_BUILD */
+#elif defined(__GNUC__) && (__GNUC__ >= 4)
+#  define KATE_API __attribute__((__visibility__("default")))
+#else
+#  define KATE_API
+#endif /* _WIN32 || _WIN64 || _WINDOWS */           
+
 #include "kate/kate_config.h"
 
 /** \name API version */
@@ -533,10 +547,10 @@ extern "C" {
 #endif
 
 /** \defgroup version Version information */
-extern int kate_get_version(void);
-extern const char *kate_get_version_string(void);
-extern int kate_get_bitstream_version(void);
-extern const char *kate_get_bitstream_version_string(void);
+KATE_API int kate_get_version(void);
+KATE_API const char *kate_get_version_string(void);
+KATE_API int kate_get_bitstream_version(void);
+KATE_API const char *kate_get_bitstream_version_string(void);
 
 /** \defgroup info kate_info access */
 KATE_API int kate_info_init(kate_info *ki);
@@ -585,13 +599,13 @@ KATE_API int kate_text_remove_markup(kate_text_encoding text_encoding,char *text
 KATE_API int kate_text_validate(kate_text_encoding text_encoding,const char *text,size_t len0);
 
 /** \defgroup comments kate_comment access */
-extern int kate_comment_init(kate_comment *kc);
-extern int kate_comment_clear(kate_comment *kc);
-extern int kate_comment_add(kate_comment *kc,const char *comment);
-extern int kate_comment_add_length(kate_comment *kc,const char *comment,size_t len);
-extern int kate_comment_add_tag(kate_comment *kc,const char *tag,const char *value);
-extern const char *kate_comment_query(const kate_comment *kc,const char *tag,int count);
-extern int kate_comment_query_count(const kate_comment *kc,const char *tag);
+KATE_API int kate_comment_init(kate_comment *kc);
+KATE_API int kate_comment_clear(kate_comment *kc);
+KATE_API int kate_comment_add(kate_comment *kc,const char *comment);
+KATE_API int kate_comment_add_length(kate_comment *kc,const char *comment,size_t len);
+KATE_API int kate_comment_add_tag(kate_comment *kc,const char *tag,const char *value);
+KATE_API const char *kate_comment_query(const kate_comment *kc,const char *tag,int count);
+KATE_API int kate_comment_query_count(const kate_comment *kc,const char *tag);
 
 /** \defgroup encoding Encoding */
 KATE_API int kate_encode_init(kate_state *k,kate_info *ki);
@@ -652,7 +666,7 @@ KATE_API int kate_font_get_index_from_code_point(const kate_font_mapping *kfm,in
 KATE_API int kate_high_decode_init(kate_state *k);
 KATE_API int kate_high_decode_packetin(kate_state *k,kate_packet *kp,kate_const kate_event **ev);
 KATE_API int kate_high_decode_clear(kate_state *k);
-extern const kate_comment *kate_high_decode_get_comments(kate_state *k);
+KATE_API const kate_comment *kate_high_decode_get_comments(kate_state *k);
 
 /** \defgroup packet kate_packet */
 KATE_API int kate_packet_wrap(kate_packet *kp,size_t nbytes,const void *data);

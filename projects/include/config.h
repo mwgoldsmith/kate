@@ -110,16 +110,4 @@
    such a type exists and the standard includes do not define it. */
 #undef uint64_t
 
-#if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
-#  if defined(KATE_DLL_BUILD)
-#    define KATE_API __declspec(dllexport)
-#  else
-#    define KATE_API __declspec(dllimport)
-#  endif /* PROJECT_DLL_BUILD */
-#elif defined(__GNUC__) && (__GNUC__ >= 4)
-#  define KATE_API __attribute__((__visibility__("default")))
-#else
-#  define KATE_API
-#endif /* _WIN32 || _WIN64 || _WINDOWS */           
-
 #endif /* CONFIG_H */
