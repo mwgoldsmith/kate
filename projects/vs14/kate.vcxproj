@@ -199,17 +199,19 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PreBuildEvent>
-      <Command>IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
+      <Command>
+IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
   DEL "$(OutDir)..\..\licenses\$(ProjectName).txt"
 )
 
 IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
   RD /s /q "$(OutDir)..\..\include\$(ProjectName)"
 )
-</Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>
+ECHO Off
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -217,14 +219,14 @@ MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
 FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
   SET "_HEADER=%%H"
-  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)\!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
 )
 
 MKDIR "$(OutDir)..\..\licenses"
 COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
 
 ENDLOCAL
-</Command>
+      </Command>
     </PostBuildEvent>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -249,17 +251,19 @@ ENDLOCAL
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PreBuildEvent>
-      <Command>IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
+      <Command>
+IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
   DEL "$(OutDir)..\..\licenses\$(ProjectName).txt"
 )
 
 IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
   RD /s /q "$(OutDir)..\..\include\$(ProjectName)"
 )
-</Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>
+ECHO Off
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -267,14 +271,14 @@ MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
 FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
   SET "_HEADER=%%H"
-  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)\!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
 )
 
 MKDIR "$(OutDir)..\..\licenses"
 COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
 
 ENDLOCAL
-</Command>
+      </Command>
     </PostBuildEvent>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -302,17 +306,19 @@ ENDLOCAL
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PreBuildEvent>
-      <Command>IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
+      <Command>
+IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
   DEL "$(OutDir)..\..\licenses\$(ProjectName).txt"
 )
 
 IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
   RD /s /q "$(OutDir)..\..\include\$(ProjectName)"
 )
-</Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>ECHO Off
+      <Command>
+ECHO Off
 SETLOCAL EnableDelayedExpansion EnableExtensions
 
 MKDIR "$(OutDir)..\..\include"
@@ -320,14 +326,14 @@ MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
 FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
   SET "_HEADER=%%H"
-  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)\!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
 )
 
 MKDIR "$(OutDir)..\..\licenses"
 COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
 
 ENDLOCAL
-</Command>
+      </Command>
     </PostBuildEvent>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -354,14 +360,15 @@ ENDLOCAL
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PreBuildEvent>
-      <Command>IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
+      <Command>
+IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
   DEL "$(OutDir)..\..\licenses\$(ProjectName).txt"
 )
 
 IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
   RD /s /q "$(OutDir)..\..\include\$(ProjectName)"
 )
-</Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -380,7 +387,7 @@ MKDIR "$(OutDir)..\..\licenses"
 COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
 
 ENDLOCAL
-</Command>
+      </Command>
     </PostBuildEvent>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -409,6 +416,17 @@ ENDLOCAL
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <LargeAddressAware>true</LargeAddressAware>
     </Link>
+    <PreBuildEvent>
+      <Command>
+IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
+  DEL "$(OutDir)..\..\licenses\$(ProjectName).txt"
+)
+
+IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
+  RD /s /q "$(OutDir)..\..\include\$(ProjectName)"
+)
+      </Command>
+    </PreBuildEvent>
     <PostBuildEvent>
       <Command>
 ECHO Off
@@ -419,14 +437,14 @@ MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
 FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
   SET "_HEADER=%%H"
-  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)\!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
 )
 
 MKDIR "$(OutDir)..\..\licenses"
 COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
 
 ENDLOCAL
-</Command>
+      </Command>
     </PostBuildEvent>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -455,14 +473,15 @@ ENDLOCAL
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
+      <Command>
+IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
   DEL "$(OutDir)..\..\licenses\$(ProjectName).txt"
 )
 
 IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
   RD /s /q "$(OutDir)..\..\include\$(ProjectName)"
 )
-</Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -474,14 +493,14 @@ MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
 FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
   SET "_HEADER=%%H"
-  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)\!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
 )
 
 MKDIR "$(OutDir)..\..\licenses"
 COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
 
 ENDLOCAL
-</Command>
+      </Command>
     </PostBuildEvent>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -515,14 +534,15 @@ ENDLOCAL
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
+      <Command>
+IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
   DEL "$(OutDir)..\..\licenses\$(ProjectName).txt"
 )
 
 IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
   RD /s /q "$(OutDir)..\..\include\$(ProjectName)"
 )
-</Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -534,14 +554,14 @@ MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
 FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
   SET "_HEADER=%%H"
-  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)\!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
 )
 
 MKDIR "$(OutDir)..\..\licenses"
 COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
 
 ENDLOCAL
-</Command>
+      </Command>
     </PostBuildEvent>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -574,14 +594,15 @@ ENDLOCAL
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
+      <Command>
+IF EXIST "$(OutDir)..\..\licenses\$(ProjectName).txt" (
   DEL "$(OutDir)..\..\licenses\$(ProjectName).txt"
 )
 
 IF EXIST "$(OutDir)..\..\include\$(ProjectName)" (
   RD /s /q "$(OutDir)..\..\include\$(ProjectName)"
 )
-</Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -593,14 +614,14 @@ MKDIR "$(OutDir)..\..\include\$(ProjectName)"
 
 FOR %%H IN (kate.h kate_config.h oggkate.h) DO (
   SET "_HEADER=%%H"
-  COPY "$(ProjectDir)..\..\include\$(ProjectName)!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
+  COPY "$(ProjectDir)..\..\include\$(ProjectName)\!_HEADER!" "$(OutDir)..\..\include\$(ProjectName)"
 )
 
 MKDIR "$(OutDir)..\..\licenses"
 COPY "$(ProjectDir)..\..\COPYING" "$(OutDir)..\..\licenses\$(ProjectName).txt" 
 
 ENDLOCAL
-</Command>
+      </Command>
     </PostBuildEvent>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
